@@ -17,4 +17,5 @@ Started working on the B-Tree Structure. I have to create the B-Tree node class 
 Finished the B-Tree Structure in the BTreeNode class. The __init__ constructor initialized a new BTreeNode object. It contained the parameters that stored the unique id of the block where this node resides in the file and the id of the parent node block. The serialize def converts the node into a binary format that can be written to a file. It essentially packs the attributes that were created in the __init__ constructor into a binary string using struct.pack. Then for each key value pair in the node, it adds the key and value to the binary data, using 8 bytes for each and adds the children array. This def returns a binary string representing the serialised node. The deserialize def creates a BTreeNode object from a binary block of data read from a file. It essentially reconstructs a node from a binary block of data read from a file, making it usable in memory. It returns a BTreeNode object reconstructed from the binary data. 
 
 Example Output:
-![example1](example1.png)
+
+![example1](example1.PNG)
