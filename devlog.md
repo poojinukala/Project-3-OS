@@ -14,8 +14,19 @@ Started working on the B-Tree Structure. I have to create the B-Tree node class 
 
 12/8/2024 5:01PM
 
-Finished the B-Tree Structure in the BTreeNode class. The __init__ constructor initialized a new BTreeNode object. It contained the parameters that stored the unique id of the block where this node resides in the file and the id of the parent node block. The serialize def converts the node into a binary format that can be written to a file. It essentially packs the attributes that were created in the __init__ constructor into a binary string using struct.pack. Then for each key value pair in the node, it adds the key and value to the binary data, using 8 bytes for each and adds the children array. This def returns a binary string representing the serialised node. The deserialize def creates a BTreeNode object from a binary block of data read from a file. It essentially reconstructs a node from a binary block of data read from a file, making it usable in memory. It returns a BTreeNode object reconstructed from the binary data. 
+Finished the B-Tree Structure in the BTreeNode class. The __init__ constructor initialized a new BTreeNode object. It contained the parameters that stored the unique id of the block where this node resides in the file and the id of the parent node block. The serialize method converts the node into a binary format that can be written to a file. It essentially packs the attributes that were created in the __init__ constructor into a binary string using struct.pack. Then for each key value pair in the node, it adds the key and value to the binary data, using 8 bytes for each and adds the children array. This method returns a binary string representing the serialised node. The deserialize method creates a BTreeNode object from a binary block of data read from a file. It essentially reconstructs a node from a binary block of data read from a file, making it usable in memory. It returns a BTreeNode object reconstructed from the binary data. 
 
 Example Output:
 
 ![example1](example1.PNG)
+
+12/8/2024 6:23PM
+Much of the functionality has been implemented. The magic number is being written during the create method and the method initializes the root node ID to 0 and the next block ID to 1. The BTreeNode had the the node struction implemetned using block ID, parent ID, key value pairs, and child pointers. The serialize and deserialize methods handle the conversion between memory and file format using 512-byte blocks. All the operations do their job. The load method will use data.txt to fetch its new key values. The inset method inserts a key-value pair into the tree, creating the root node if necessary. The search method traversals through the tree to locate a key. The create, openingFile, and quit methods handle file operations. My goal in this session is to implement node splitting. For node splitting, I have to make sure if a node overflows, it is split into two nodes: a left node and a right node and the middle key is now the parent node. I have to ensure the child pointers are split evenly between left and right nodes. 
+
+12/8/2024 10:05PM
+Node splitting is now implemeted. I had to create new helper methods, getNextBlockId to track and assign block IDs and writeNode to handle writting a node to the file. This should finish up all the directions given in the project3 pdf. I have included an example output.
+
+![example2](example2.PNG)
+![example3](example3.PNG)
+![example4](example4.PNG)
+![example5](example5.PNG)
